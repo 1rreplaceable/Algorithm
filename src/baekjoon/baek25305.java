@@ -1,19 +1,22 @@
+package baekjoon;
+
 import java.util.Arrays;
 import java.util.Scanner;
-
-public class baek2587 {
+public class baek25305 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] arr = new int[5];
-        int sum =0;
-        for(int i=0; i< 5; i++){
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int[] arr = new int[n];
+
+        for(int i = 0; i <n; i++){
             arr[i] = sc.nextInt();
-            sum += arr[i];
         }
-        System.out.println(sum / 5);
+
         Arrays.sort(arr);
-        System.out.println(arr[2]);
+
+        System.out.println(arr[n-k]);
 
 
     }

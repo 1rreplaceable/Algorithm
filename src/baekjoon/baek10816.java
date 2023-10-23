@@ -1,3 +1,5 @@
+package baekjoon;
+
 import java.util.Scanner;
 // 시간초과
 public class baek10816 {
