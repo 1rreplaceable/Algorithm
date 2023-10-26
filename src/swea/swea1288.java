@@ -2,7 +2,7 @@ package swea;
 
 import java.util.Scanner;
 
-public class swea1928 {
+public class swea1288 {
 
     public static void main(String args[]) throws Exception
     {
