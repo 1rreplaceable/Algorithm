@@ -21,8 +21,6 @@ public class baek1158 {
             System.out.println("arrn["+i+"] = "+arrN[i]);
         }
 
-
-
         bw.close();
         br.close();
     }
