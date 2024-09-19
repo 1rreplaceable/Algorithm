@@ -6,19 +6,48 @@ import java.util.Stack;
 
 public class baek1935 {
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-       int N = Integer.parseInt(br.readLine());
-       String S = br.readLine();
-        Stack<String> stack = new Stack<>();
-       String[] arrS = S.split("");
+        int num = Integer.parseInt(br.readLine());
+        String data = br.readLine();
+        double[] arr = new double[num];
+        for(int i = 0; i < arr.length; i++) {
+            arr[i] = Double.parseDouble(br.readLine());
+        }
 
+        Stack<Double> stack = new Stack<>();
 
-
-        bw.flush();
-        bw.close();
+        double result = 0;
+        for(int i = 0; i < data.length(); i++) {
+            if('A' <= data.charAt(i) && data.charAt(i) <= 'Z') {
+                stack.push(arr[data.charAt(i) - 'A']);
+            } else {
+                if(!stack.isEmpty()) {
+                    double first = stack.pop();
+                    double second = stack.pop();
+                    switch (data.charAt(i)) {
+                        case '+':
+                            result = second + first;
+                            stack.push(result);
+                            continue;
+                        case '-':
+                            result = second - first;
+                            stack.push(result);
+                            continue;
+                        case '*':
+                            result = second * first;
+                            stack.push(result);
+                            continue;
+                        case '/':
+                            result = second / first;
+                            stack.push(result);
+                            continue;
+                    }
+                }
+            }
+        }
+        System.out.printf("%.2f", stack.pop());
         br.close();
-
     }
 }
