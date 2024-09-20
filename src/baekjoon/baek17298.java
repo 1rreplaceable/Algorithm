@@ -1,6 +1,7 @@
 package baekjoon;
 
 import java.io.*;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class baek17298 {
@@ -10,29 +11,33 @@ public class baek17298 {
 
         int N = Integer.parseInt(br.readLine());
         int[] arrN = new int[N];
+        int[] result = new int[N];
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for(int i=0; i <N; i ++){
 
+        for(int i = 0; i < N; i++) {
             arrN[i] = Integer.parseInt(st.nextToken());
         }
 
-        for(int i =0; i < arrN.length-1; i++){
-            int ans = arrN[i];
-            int q = -1;
-            for(int j = i+1; j < arrN.length; j++){
-                if(arrN[j] > ans){
-                    q = arrN[j];
-                    break;
-                }
-            }
-            bw.write(q+" ");
-        }
-        bw.write("-1");
-        bw.flush();
+        Stack<Integer> stack = new Stack<>();
 
+        for(int i = 0; i < N; i++) {
+            while(!stack.isEmpty() && arrN[stack.peek()] < arrN[i]) {
+                result[stack.pop()] = arrN[i];
+            }
+            stack.push(i);
+        }
+
+        while(!stack.isEmpty()) {
+            result[stack.pop()] = -1;
+        }
+
+        for(int i = 0; i < N; i++) {
+            bw.write(result[i] + " ");
+        }
+
+        bw.flush();
         bw.close();
         br.close();
     }
-
-
 }
+
