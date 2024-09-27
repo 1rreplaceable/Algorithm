@@ -28,8 +28,8 @@ public class baek10819 {
             if (left == right) {
                 deque.add(arr[left]);
             } else {
-                deque.addFirst(arr[left]);
-                deque.addLast(arr[right]);
+                deque.add(arr[right]);
+                deque.add(arr[left]);
             }
             left++;
             right--;
@@ -39,10 +39,16 @@ public class baek10819 {
         for (int i = 0; i < n; i++) {
             rearranged[i] = deque.pollFirst();
         }
-
+        for (int i = 0; i < n; i++) {
+            System.out.print(rearranged[i] + " ");
+        }
         int sum = 0;
         for (int i = 0; i < n - 1; i++) {
-            sum += Math.abs(rearranged[i] - rearranged[i + 1]);
+            if (n % 2 == 0) {
+                sum += (rearranged[i] - rearranged[i + 1]);
+            } else {
+                sum -= (rearranged[i] - rearranged[i + 1]);
+            }
         }
 
         System.out.println(sum);
